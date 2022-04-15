@@ -1,5 +1,5 @@
 #include <iostream>
-using namespace std;
+using std::cin, std::cout, std::endl, std::string;
 
 // B530 lub B102 można doktora złapać
 // 3 zadania zaliczają

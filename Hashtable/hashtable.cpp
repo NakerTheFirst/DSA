@@ -1,5 +1,5 @@
 #include <iostream>
-using namespace std;
+using std::cin, std::cout, std::endl, std::string;
 
 struct data {
     long key;
