@@ -49,8 +49,8 @@ cmake_ninja_workdir = A$:/Kod/C++/DSA/Hashtable/cmake-build-debug/
 
 build cmake_object_order_depends_target_Hashtable: phony || CMakeFiles/Hashtable.dir
 
-build CMakeFiles/Hashtable.dir/main.cpp.obj: CXX_COMPILER__Hashtable_Debug A$:/Kod/C++/DSA/Hashtable/main.cpp || cmake_object_order_depends_target_Hashtable
-  DEP_FILE = CMakeFiles\Hashtable.dir\main.cpp.obj.d
+build CMakeFiles/Hashtable.dir/hashtable.cpp.obj: CXX_COMPILER__Hashtable_Debug A$:/Kod/C++/DSA/Hashtable/hashtable.cpp || cmake_object_order_depends_target_Hashtable
+  DEP_FILE = CMakeFiles\Hashtable.dir\hashtable.cpp.obj.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\Hashtable.dir
   OBJECT_FILE_DIR = CMakeFiles\Hashtable.dir
@@ -65,7 +65,7 @@ build CMakeFiles/Hashtable.dir/main.cpp.obj: CXX_COMPILER__Hashtable_Debug A$:/K
 #############################################
 # Link the executable Hashtable.exe
 
-build Hashtable.exe: CXX_EXECUTABLE_LINKER__Hashtable_Debug CMakeFiles/Hashtable.dir/main.cpp.obj
+build Hashtable.exe: CXX_EXECUTABLE_LINKER__Hashtable_Debug CMakeFiles/Hashtable.dir/hashtable.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Hashtable.dir
