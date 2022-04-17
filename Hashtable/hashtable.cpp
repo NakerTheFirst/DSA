@@ -6,6 +6,8 @@ using std::cout;
 using std::endl;
 using std::string;
 
+long hash(long toHash, long modulo);
+
 class Hash {
 public:
     long key;
@@ -25,7 +27,7 @@ int main() {
         long index;
     };
 
-    unsigned int n;
+    long n;
 
     // Take number of test cases
     cin >> n;
@@ -39,9 +41,14 @@ int main() {
     // Print function
     for(int i = 0; i < n; ++i) {
         cout << data[i].key << " " << data[i].value << endl;
+        // debug // cout << data[i].index << endl;
     }
 
     // Hashing
+    for(int i = 0; i < n; ++i) {
+        data[i].index = hash(data[i].key, n);
+        // debug // cout << data[i].index << data[i].key << data[i].value << endl;
+    }
 
 
 
@@ -66,9 +73,12 @@ int main() {
 //    }
     return 0;
 }
+//}
+
 //
 //long hash(data testStruct) {
 //    testStruct.key = testStruct.key % 739; // change 739 to tab size
 //    return testStruct.key;
-//}
-
+long hash(long toHash, long modulo) {
+    return toHash % modulo;
+}
