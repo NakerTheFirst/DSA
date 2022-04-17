@@ -1,61 +1,74 @@
 #include <iostream>
-using std::cin, std::cout, std::endl, std::string;
+#include <fstream>
 
-struct data {
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
+
+class Hash {
+public:
     long key;
     char text[8];
+    char sizeCheck[4];
+    long tabSize; // tabSize can be directly accessed through an object
+    long hash(long keyToHash) {
+        return keyToHash % tabSize;
+    }
 };
-
-long hash(data dataHash);
-void insert(data dataIn);
 
 int main() {
 
-    // Take number of occurrences
-    long n;
+    struct dataTest{
+        long key;
+        char value[8];
+        long index;
+    };
+
+    unsigned int n;
+
+    // Take number of test cases
     cin >> n;
-    data newStruct[n];
 
-    // Take data to hash
-    for (int i = 0; i < n; ++i) {
-        cin >> newStruct[i].text;
+    dataTest data[n];
+    for(int i = 0; i < n; ++i) {
+        cin >> data[i].key >> data[i].value;
+        data[i].index = data[i].key;
     }
 
-
-    /*  Print outputs
-    for (int i = 0; i < n; ++i) {
-        cout << newStruct[i].text  << endl;
+    // Print function
+    for(int i = 0; i < n; ++i) {
+        cout << data[i].key << " " << data[i].value << endl;
     }
-    */
+
+    // Hashing
 
 
-    string choice;
 
-    //if (choice == 'size') return -1;
-    //if (choice == 'add') return -1;
-    //if (choice == 'delete') return -1;
-    //if (choice == 'print') return -1;
-
-    /*
-    for(int i = 0; i < 5; ++i) {
-        newStruct[i].text[i] = 'Name';
-    }
-    */
-
-    /*
-    for (int i = 0; i < 5; ++i) {
-        cout << newStruct[i].key << " " << newStruct[i].text << endl;
-    }
-     */
+//    Hash data[] = {0, "size", "size", 4, };
+//    cin >> data.tabSize;
+//
+//    cout << data.sizeCheck << endl;
+//    cin >> data.sizeCheck >> data.tabSize;
+//    cout << data.sizeCheck << data.tabSize << endl;
+//
+//    for(int i = 0; i < data.tabSize; ++i) {
+//        cin >> fCheck >> tabSize;
+//
+//        // "Size" function
+//        if(fCheck == "size") {
+//
+//        }
+//            // Set the text value of objects
+//            for (int i = 0; i < n+5; ++i) {
+//                cin >> newStruct[i].text;
+//            }
+//    }
     return 0;
 }
+//
+//long hash(data testStruct) {
+//    testStruct.key = testStruct.key % 739; // change 739 to tab size
+//    return testStruct.key;
+//}
 
-
-long hash(data testStruct) {
-    long hashCode = testStruct.key % 11;
-    return hashCode;
-}
-
-void insert(data dataIn) {
-
-}
