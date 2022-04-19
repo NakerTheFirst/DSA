@@ -7,9 +7,8 @@ using std::string;
 
 long hash(long keyToHash, long tabSize);
 
-// Todo:
-// Resolve collision issue using open addressing with linear probing
-// Create input checking function to run print on demand, in between add()
+// Todo: Resolve collision issue using open addressing with linear probing
+// Todo: Find a solution to etiquette usage in while/for loop
 
 struct dataTest{
     long key;
@@ -28,41 +27,69 @@ int main() {
     int sizeValue;
     bool stopper = false;
     long n;
+    int iter = 0;
 
     // Take number of test cases
     cin >> n;
 
     dataTest* data;
 
+    loop:
     while (!stopper) {
 
-        cin >> command >> sizeValue;
+        cin >> command;
+
         if (command == "size") {
-            dataTest* data = new dataTest[sizeValue];
+            cin >> sizeValue;
+            data = new dataTest[sizeValue+3];
         }
 
-        for (int i = 0; i < n; ++i) {
-            cin >> data[i].key >> data[i].value;
-            data[i].index = data[i].key;
+        commands:
+        cin >> command;
+
+        // Check command input and redirect to following etiquette
+        if (command == "add") goto add;
+        if (command == "print") goto print;
+        if (command == "delete") goto del;
+        if (command == "stop") goto stop;
+
+        // Safe lock for input errors
+        return -1;
+
+        add:
+        if (command == "add") {
+            cin >> data[iter].key >> data[iter].value;
+            data[iter].index = hash(data[iter].key, sizeValue);
         }
 
-        // Print function
-        for (int i = 0; i < n; ++i) {
-            cout << data[i].key << " " << data[i].value << endl;
+        cin >> command;
+        goto commands;
+
+        print:
+        if (command == "print") {
+            cout << data[iter].index << " " << data[iter].key << " " << data[iter].value << endl;
         }
 
-        // Hashing
-        for (int i = 0; i < n; ++i) {
-            data[i].index = hash(data[i].key, n);
+        cin >> command;
+        goto commands;
+
+        del:
+        if (command == "delete") {
+            // delete
         }
 
-        // Debugging
-        for (int i = 0; i < n; ++i) {
-            cout << data[i].index << " " << data[i].key << " " << data[i].value << "\n";
-        }
+        cin >> command;
+        goto commands;
 
+        stop:
         stopper = true;
+        iter += 1;
+
     }
+
+    if (iter != n) goto loop;
+
+    delete[] data;
 
     return 0;
 }
