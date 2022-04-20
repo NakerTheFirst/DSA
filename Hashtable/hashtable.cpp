@@ -8,9 +8,10 @@ using std::string;
 long hash(long keyToHash, long tabSize);
 
 // Todo: Resolve collision issue using open addressing with linear probing
-// Todo: Find a solution to etiquette usage in while/for loop
+// Todo: Fix print function
+// Todo: Create a delete function
 
-struct dataTest{
+struct dataTest {
     long key;
     char value[8];
     long index;
@@ -18,16 +19,11 @@ struct dataTest{
 
 int main() {
 
-    // New and delete operators usage
-    // int x;
-    // int* ptr = new int[x];
-    // delete[] ptr;
-
     string command;
     int sizeValue;
-    bool stopper = false;
     long n;
     int iter = 0;
+    bool stopper = false;
 
     // Take number of test cases
     cin >> n;
@@ -35,7 +31,7 @@ int main() {
     dataTest* data;
 
     loop:
-    while (!stopper) {
+    while (stopper == false) {
 
         cin >> command;
 
@@ -53,16 +49,18 @@ int main() {
         if (command == "delete") goto del;
         if (command == "stop") goto stop;
 
+        cout << command << endl;
+
         // Safe lock for input errors
         return -1;
 
         add:
+        cout << command << endl;
         if (command == "add") {
             cin >> data[iter].key >> data[iter].value;
             data[iter].index = hash(data[iter].key, sizeValue);
         }
 
-        cin >> command;
         goto commands;
 
         print:
@@ -87,6 +85,7 @@ int main() {
 
     }
 
+    stopper = false;
     if (iter != n) goto loop;
 
     delete[] data;
