@@ -1,14 +1,14 @@
-"A:\Programy\CLion 2021.3.4\bin\cmake\win\bin\cmake.exe" "-DCMAKE_MAKE_PROGRAM=A:/Programy/CLion 2021.3.4/bin/ninja/win/ninja.exe" -G Ninja -S A:\Kod\C++\DSA\Hashtable -B A:\Kod\C++\DSA\Hashtable\cmake-build-default
--- The C compiler identification is GNU 11.2.0
--- The CXX compiler identification is GNU 11.2.0
+"A:\Programy\CLion 2021.3.4\bin\cmake\win\bin\cmake.exe" -G "CodeBlocks - MinGW Makefiles" -S A:\Kod\C++\DSA\Hashtable -B A:\Kod\C++\DSA\Hashtable\cmake-build-default
+-- The C compiler identification is GNU 9.2.0
+-- The CXX compiler identification is GNU 9.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
--- Check for working C compiler: A:/Programy/CLion 2021.3.4/bin/mingw/bin/gcc.exe - skipped
+-- Check for working C compiler: C:/MinGW/bin/gcc.exe - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: A:/Programy/CLion 2021.3.4/bin/mingw/bin/g++.exe - skipped
+-- Check for working CXX compiler: C:/MinGW/bin/g++.exe - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
 -- Configuring done

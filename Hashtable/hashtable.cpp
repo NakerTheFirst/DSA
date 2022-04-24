@@ -1,94 +1,125 @@
 #include <iostream>
+#include <cstring>
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
 
-long hash(long keyToHash, long tabSize);
-
-// Todo: Fix the add function
-// Todo: Fix the print function
-// Todo: Add collision issue solution using open addressing with linear probing
-// Todo: Create the delete function
-
 struct dataTest {
     long key;
+    long desired;
     char value[8];
-    long index;
 };
+
+long hash(long keyToHash, long tabSize);
 
 int main() {
 
+    dataTest temp{};
     string command;
     int sizeValue;
     int n;
+    int h;
     int iter = 0;
-    int addIter = 0;
     bool stopper = false;
 
     // Take number of test cases
     cin >> n;
 
-    dataTest* data;
+    dataTest* data{};
 
     loop:
     while (!stopper) {
 
-        commands:
         cin >> command;
 
-        // Check command input and redirect
-        if (command == "size") goto size;
-        if (command == "add") goto add;
-        if (command == "print") goto print;
-        if (command == "delete") goto del;
-        if (command == "stop") goto stop;
-
-        // Safe lock for input errors
-        return -1;
-
-        size:
         if (command == "size") {
             cin >> sizeValue;
-            data = new dataTest[sizeValue+3];
-            goto commands;
-        }
-
-        add:
-        // addIter = 0;
-        if (command == "add") {
+            data = new dataTest[sizeValue];
             for (int i = 0; i < sizeValue; ++i) {
-                cin >> data[i].key >> data[i].value;
-                data[i].index = hash(data[i].key, sizeValue);
-                cout << data[i].index << " " << data[i].key << " " << data[i].value << "end?" << endl;
+                data[i].key = 0;
+                data[i].desired = 0;
             }
-            /*addIter += 1;*/
-            goto commands;
+            continue;
         }
 
-        print:
+        if (command == "add") {
+
+            cin >> temp.key >> temp.value;
+            h = hash(temp.key, sizeValue);
+            temp.desired = h;
+
+            int it = 1;
+
+            while (data[h].key != 0) {
+                h = hash(temp.key+it, sizeValue);
+                ++it;
+            }
+
+            data[h].key = temp.key;
+            strcpy(data[h].value, temp.value);
+
+            data[h].desired = temp.desired;
+
+            continue;
+        }
+
         if (command == "print") {
-            for (int i = 0; i < iter; ++i) {
-                cout << data[i].index << " " << data[i].key << " " << data[i].value << endl;
+            for (int i = 0; i < sizeValue; ++i) {
+                if (data[i].key != 0) {
+                    cout << i << " " << data[i].key << " " << data[i].value << endl;
+                }
             }
-            cout << data[iter].index << " " << data[iter].key << " " << data[iter].value << endl;
-            goto commands;
+            cout << endl;
+            continue;
         }
 
-        del:
         if (command == "delete") {
-            // delete
-            goto commands;
+
+            cin >> temp.key;
+
+            for (int i = 0; i < sizeValue; ++i) {
+                if (data[i].key == temp.key) {
+
+                    // Delete added data
+                    data[i].desired = 0;
+                    data[i].key = 0;
+                    memset(data[i].value, 0, 8);
+
+                    for (int j = 0; j < sizeValue; ++j) {
+
+                        if (data[j].desired != j && data[j].desired != 0) {
+
+                            int tmp = data[j].desired;
+
+                            if (data[tmp].key == 0) {
+
+                                // Swap index numbers with the data to delete
+                                data[tmp].key = data[j].key;
+                                data[tmp].desired = data[j].desired;
+                                strcpy(data[tmp].value, data[j].value);
+
+                                // Delete added data
+                                data[j].desired = 0;
+                                data[j].key = 0;
+                                memset(data[j].value, 0, 8);
+                                j = 0;
+                            }
+                        }
+                    }
+                }
+            }
+            continue;
         }
 
-        stop:
         if (command == "stop") {
             stopper = true;
             iter += 1;
         }
     }
 
+    // Outer looper
     stopper = false;
     if (iter != n) goto loop;
 
@@ -98,6 +129,5 @@ int main() {
 }
 
 long hash(long keyToHash, long tabSize) {
-
     return keyToHash % tabSize;
 }
