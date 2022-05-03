@@ -25,18 +25,12 @@ int main() {
         // Set the size of an array
         cin >> k;
         tab[k] = {};
-        
+
         // Insert elements
         for (int i = 0; i < k; ++i) {
             cin >> tab[i];
         }
         cout << endl;
-
-        // Print unsorted
-        for (int i = 0; i < k; ++i) {
-            cout << tab[i] << " ";
-        }
-        cout << endl << endl;
 
         sort(tab, k);
 
@@ -78,13 +72,11 @@ void heapify(int* tab, int n, int root) {
     }
 }
 
-
 void buildHeap(int* tab, int tabSize){
 
     for (int i = tabSize/2 - 1; i >= 0; --i) {
         heapify(tab, tabSize, i);
     }
-
 }
 
 void sort(int* tab, int tabSize) {
@@ -94,10 +86,12 @@ void sort(int* tab, int tabSize) {
 
     for (int i = tabSize-1; i >= 0; --i) {
 
-        for (int j = 0; j <= i; ++j) {
-            cout << tab[j] << " ";
+        if (i != 0) {
+            for (int j = 0; j <= i; ++j) {
+                cout << tab[j] << " ";
+            }
+            cout << endl;
         }
-        cout << endl;
 
         temp = tab[0];
         tab[0] = tab[i];
