@@ -1,24 +1,24 @@
 #include <iostream>
+
 using std::cin;
 using std::cout;
 using std::endl;
 
-// Todo: Create heap sorting function
-// Todo: Create heapify function
+// Todo: Fix sorting algorithm
 // Todo: Create a valid output format for larger arrays
 
-long sort(int A, int n);
+void heapify(int* tab, int n, int root);
+void buildHeap(int* tab, int tabSize);
+void sort(int* tab, int tabSize);
 
 int main() {
 
-//    cout << sort(5, 4) << endl;
-
     bool end = false;
     int loopIter = 0;
-    int n;
-    int k;
-    long *tab;
-    tab = new long{};
+    int n, k;
+
+    int *tab;
+    tab = new int{};
 
     // Set the number of test cases
     cin >> n;
@@ -27,11 +27,17 @@ int main() {
 
         // Set the size of an array
         cin >> k;
-        tab[k];
+        tab[k] = {};
+
+        // Set the default table element
+        for (int i = 0; i < k; ++i) {
+            tab[i] = -1;
+        }
 
         // Insert elements
         for (int i = 0; i < k; ++i) {
             cin >> tab[i];
+            cout << tab[i] << " " << endl;
         }
         cout << endl;
 
@@ -41,11 +47,13 @@ int main() {
         }
         cout << endl;
 
+        sort(tab, k);
+
         // Print sorted - needs a fix
-//        for (int i = 0; i < k; ++i) {
-//            cout << tab[i] << " ";
-//        }
-//        cout << endl;
+        for (int i = 0; i < k; ++i) {
+            cout << tab[i] << " ";
+        }
+        cout << endl << endl;
 
         ++loopIter;
 
@@ -57,23 +65,46 @@ int main() {
     return 0;
 }
 
-//long sort(int A, int n) {
-//
-//    int* A = new int[n];
-//
-//    for (int i = n - 1; i > 0; --i) {
-//
-//        // Take size of an A int table
-//        cout << n;
-//        int temp;
-//
-//        // Swap elements
-//        temp = A[i];
-//        A[i] = A[0];
-//        A[0] = temp;
-//
-//
-//    }
-//    delete [] A;
-//    return A;
-//}
+void heapify(int* tab, int n, int root) {
+
+    int largest = root;
+    int l = 2*root + 1;
+    int r = 2*root + 2;
+    int temp;
+
+    // If left child is larger than root
+    if (l < n && tab[l] > tab[largest]) largest = l;
+
+    // If right child is larger than largest
+    if (r < n && tab[r] > tab[largest]) largest = r;
+
+    // If largest is not a root
+    if (largest != root) {
+        temp = tab[root];
+        tab[root] = tab[largest];
+        tab[largest] = temp;
+        heapify(tab, n, largest);
+    }
+}
+
+
+void buildHeap(int* tab, int tabSize){
+
+    for (int i = tabSize/2 - 1; i >= 0; --i) {
+        heapify(tab, tabSize, i);
+    }
+
+}
+
+void sort(int* tab, int tabSize) {
+
+    long temp;
+    buildHeap(tab, tabSize);
+
+    for (int i = tabSize-1; i >= 0; --i) {
+        temp = tab[0];
+        tab[0] = tab[i];
+        tab[i] = temp;
+        heapify(tab, i, 0);
+    }
+}
