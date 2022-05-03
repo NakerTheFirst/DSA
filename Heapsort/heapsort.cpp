@@ -4,9 +4,6 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-// Todo: Fix sorting algorithm
-// Todo: Create a valid output format for larger arrays
-
 void heapify(int* tab, int n, int root);
 void buildHeap(int* tab, int tabSize);
 void sort(int* tab, int tabSize);
@@ -28,16 +25,10 @@ int main() {
         // Set the size of an array
         cin >> k;
         tab[k] = {};
-
-        // Set the default table element
-        for (int i = 0; i < k; ++i) {
-            tab[i] = -1;
-        }
-
+        
         // Insert elements
         for (int i = 0; i < k; ++i) {
             cin >> tab[i];
-            cout << tab[i] << " " << endl;
         }
         cout << endl;
 
@@ -45,11 +36,11 @@ int main() {
         for (int i = 0; i < k; ++i) {
             cout << tab[i] << " ";
         }
-        cout << endl;
+        cout << endl << endl;
 
         sort(tab, k);
 
-        // Print sorted - needs a fix
+        // Print sorted
         for (int i = 0; i < k; ++i) {
             cout << tab[i] << " ";
         }
@@ -102,6 +93,12 @@ void sort(int* tab, int tabSize) {
     buildHeap(tab, tabSize);
 
     for (int i = tabSize-1; i >= 0; --i) {
+
+        for (int j = 0; j <= i; ++j) {
+            cout << tab[j] << " ";
+        }
+        cout << endl;
+
         temp = tab[0];
         tab[0] = tab[i];
         tab[i] = temp;

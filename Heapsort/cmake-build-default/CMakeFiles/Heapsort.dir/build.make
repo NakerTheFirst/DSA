@@ -72,15 +72,15 @@ CMakeFiles/Heapsort.dir/heapsort.cpp.obj: CMakeFiles/Heapsort.dir/flags.make
 CMakeFiles/Heapsort.dir/heapsort.cpp.obj: ../heapsort.cpp
 CMakeFiles/Heapsort.dir/heapsort.cpp.obj: CMakeFiles/Heapsort.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=A:\Kod\C++\DSA\Heapsort\cmake-build-default\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Heapsort.dir/heapsort.cpp.obj"
-	"A:\Programy\CLion 2021.3.4\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Heapsort.dir/heapsort.cpp.obj -MF CMakeFiles\Heapsort.dir\heapsort.cpp.obj.d -o CMakeFiles\Heapsort.dir\heapsort.cpp.obj -c A:\Kod\C++\DSA\Heapsort\heapsort.cpp
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Heapsort.dir/heapsort.cpp.obj -MF CMakeFiles\Heapsort.dir\heapsort.cpp.obj.d -o CMakeFiles\Heapsort.dir\heapsort.cpp.obj -c A:\Kod\C++\DSA\Heapsort\heapsort.cpp
 
 CMakeFiles/Heapsort.dir/heapsort.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Heapsort.dir/heapsort.cpp.i"
-	"A:\Programy\CLion 2021.3.4\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E A:\Kod\C++\DSA\Heapsort\heapsort.cpp > CMakeFiles\Heapsort.dir\heapsort.cpp.i
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E A:\Kod\C++\DSA\Heapsort\heapsort.cpp > CMakeFiles\Heapsort.dir\heapsort.cpp.i
 
 CMakeFiles/Heapsort.dir/heapsort.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Heapsort.dir/heapsort.cpp.s"
-	"A:\Programy\CLion 2021.3.4\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S A:\Kod\C++\DSA\Heapsort\heapsort.cpp -o CMakeFiles\Heapsort.dir\heapsort.cpp.s
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S A:\Kod\C++\DSA\Heapsort\heapsort.cpp -o CMakeFiles\Heapsort.dir\heapsort.cpp.s
 
 # Object files for target Heapsort
 Heapsort_OBJECTS = \
