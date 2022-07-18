@@ -5,4 +5,4 @@ My Data Structures and Algorithms II class C++ implementations
 
 - [x] Hashtable
 - [x] Heapsort
-- [ ] Minimum Spanning Tree
+- [x] Minimum Spanning Tree
